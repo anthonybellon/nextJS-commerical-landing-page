@@ -81,7 +81,6 @@ npm run build
 
 - `clsx`: Utility for constructing `className` strings conditionally.
 - `dotenv`: Loads environment variables from a `.env` file.
-- `firebase`: Firebase SDK for the backend services.
 
 ### Internationalization
 

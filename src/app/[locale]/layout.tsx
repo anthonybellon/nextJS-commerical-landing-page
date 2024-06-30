@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import '../../styles/globals.css';
 
 export default async function LocaleLayout({
   children,
@@ -12,7 +13,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className="grid min-h-screen">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

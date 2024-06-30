@@ -18,14 +18,16 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/app/pages/*"],
       "@styles/*": ["src/app/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@models/*": ["src/models/*"],
-      "@store/*": ["src/store/*"]
+      "@store/*": ["src/store/*"],
+      "@config/*": ["src/config/*"],
+      "@type/*": ["src/types/*"]
     }
   },
   "include": [
