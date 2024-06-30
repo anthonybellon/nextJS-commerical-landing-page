@@ -71,9 +71,6 @@ module.exports = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      boxShadow: {
-        neumorphism: '8px 8px 16px #bebebe, -8px -8px 16px #ffffff',
-      },
     },
   },
   plugins: [require('tailwindcss-animate')],
