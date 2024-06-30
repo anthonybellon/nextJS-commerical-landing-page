@@ -37,7 +37,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "global.d.ts",
-    "src/_document.js"
+    "src/_document.js",
+    "src/components/organisms/Navbar/navBarVariants"
   ],
   "exclude": ["node_modules"]
 }

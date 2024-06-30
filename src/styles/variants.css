@@ -1,0 +1,31 @@
+/* Variant styles */
+.navbar-primary {
+  @apply bg-primary text-primary-foreground;
+}
+.navbar-secondary {
+  @apply bg-secondary text-secondary-foreground;
+}
+.navbar-accent {
+  @apply bg-accent text-accent-foreground;
+}
+.navbar-destructive {
+  @apply bg-destructive text-destructive-foreground;
+}
+
+/* Design styles */
+.navbar-static {
+  @apply sticky top-0 z-40;
+}
+.navbar-floating {
+  @apply fixed left-1/2 top-4 z-40 w-11/12 -translate-x-1/2 transform rounded-full shadow-lg md:w-3/4 lg:w-2/3;
+}
+.navbar-design-minimal {
+  @apply bg-transparent text-foreground shadow-none;
+}
+
+/* Adding subtle shadows and rounded corners to buttons */
+.button-texture {
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}

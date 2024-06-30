@@ -1,9 +1,13 @@
 export type ButtonVariant =
-  | 'link'
   | 'default'
   | 'destructive'
   | 'outline'
   | 'secondary'
   | 'ghost'
-  | null
-  | undefined;
+  | 'link';
+
+export type ButtonType = {
+  label: string;
+  onClick: () => void;
+  variant?: ButtonVariant;
+};

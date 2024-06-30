@@ -1,21 +1,36 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { Button } from '@components/ui/button';
-import { ButtonVariant } from '@type/buttonTypes';
+import { ButtonType } from '@type/buttonTypes';
 import ChevronDownIcon from '@components/atoms/icons/ChevronDownItem';
 import MountainIcon from '@components/atoms/icons/MountainIcon';
 import DropdownMenu from '@components/molecules/DropDownMenu';
+import classNames from 'classnames';
+import '../../styles/variants.css';
 
 interface NavBarProps {
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link';
+  design?: 'static' | 'floating' | 'minimal';
   navItems: {
     label: string;
     href?: string;
     dropdownItems?: { label: string; href: string }[];
   }[];
-  buttons: { label: string; onClick: () => void; variant?: ButtonVariant }[];
+  buttons: ButtonType[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({ navItems, buttons }) => {
+const NavBar: React.FC<NavBarProps> = ({
+  variant = 'default',
+  design = 'static',
+  navItems,
+  buttons,
+}) => {
   const [openDropdownIndex, setOpenDropdownIndex] = React.useState<
     number | null
   >(null);
@@ -37,11 +52,13 @@ const NavBar: React.FC<NavBarProps> = ({ navItems, buttons }) => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-background">
+    <header
+      className={classNames('w-full', `navbar-${design}`, `navbar-${variant}`)}
+    >
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <Link
-            href="#"
+            href="/"
             className="flex items-center space-x-2"
             prefetch={false}
           >
@@ -51,45 +68,35 @@ const NavBar: React.FC<NavBarProps> = ({ navItems, buttons }) => {
         </div>
         <nav className="hidden md:flex">
           <ul className="flex items-center space-x-6">
-            {navItems.map((item, index) =>
-              item.dropdownItems ? (
-                <li
-                  key={index}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
+            {navItems.map((item, index) => (
+              <li
+                key={index}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Link
+                  href={item.href || '#'}
+                  className="nav-item flex items-center space-x-2 transition-colors"
+                  prefetch={false}
                 >
-                  <Link
-                    href="#"
-                    className="flex items-center space-x-2 font-medium transition-colors hover:text-primary"
-                    prefetch={false}
-                  >
-                    <span>{item.label}</span>
+                  <span>{item.label}</span>
+                  {item.dropdownItems && (
                     <ChevronDownIcon
                       className={`h-4 w-4 transform transition-transform duration-200 ${openDropdownIndex === index ? 'rotate-180' : 'rotate-0'}`}
                     />
-                  </Link>
-                  {openDropdownIndex === index && (
-                    <DropdownMenu items={item.dropdownItems} />
                   )}
-                </li>
-              ) : (
-                <li key={index}>
-                  <Link
-                    href={item.href || '#'}
-                    className="font-medium transition-colors hover:text-primary"
-                    prefetch={false}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ),
-            )}
+                </Link>
+                {openDropdownIndex === index && item.dropdownItems && (
+                  <DropdownMenu items={item.dropdownItems} />
+                )}
+              </li>
+            ))}
           </ul>
         </nav>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 ">
           {buttons.map((button, index) => (
-            <Button key={index} variant={button.variant}>
+            <Button key={index} variant={button.variant} design={design}>
               {button.label}
             </Button>
           ))}

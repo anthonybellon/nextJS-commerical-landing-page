@@ -1,3 +1,5 @@
+import { ButtonType } from '@type/buttonTypes';
+
 export const navItems = [
   { label: 'Home', href: '#home' },
   {
@@ -18,4 +20,17 @@ export const navItems = [
   },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
+];
+
+export const navButtons: ButtonType[] = [
+  {
+    label: 'Login',
+    onClick: () => console.log('Login clicked!'),
+    variant: 'secondary',
+  },
+  {
+    label: 'Sign Up',
+    onClick: () => console.log('Sign Up clicked!'),
+    variant: 'default',
+  },
 ];
